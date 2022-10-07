@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Messanger from './components/messanger';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import AccountProvider from './Context/AccountProvider';
+
 
 function App() {
+
+  // get client id from console.cloud.google.com
+  const clientId = '384001038813-imgniv44r0ta7kk7uhi6cfd6v9gigt96.apps.googleusercontent.com';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AccountProvider>
+        <Messanger />
+        </AccountProvider>
+      </GoogleOAuthProvider>
+
+
+    </>
   );
 }
 
